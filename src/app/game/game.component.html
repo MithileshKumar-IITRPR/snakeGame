@@ -1,0 +1,12 @@
+<div class="game-board">
+    <div *ngFor="let row of rows; let y = index" class="row">
+      <div *ngFor="let col of cols; let x = index"
+           class="cell"
+           [ngClass]="{
+                'snake-body': isSnakeBody(x, y),
+                'food': isFood(x, y)
+            }">
+      </div>
+    </div>
+    <div class="score">Score: {{ score }}</div>
+</div>

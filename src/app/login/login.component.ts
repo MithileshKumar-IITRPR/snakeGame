@@ -14,6 +14,7 @@ export class LoginComponent {
   login() {
     if (this.name.trim()) {
         localStorage.setItem('user', JSON.stringify(this.name));
+        this.router.navigate(['/game']);
     }
   }
 }

@@ -1,0 +1,29 @@
+.game-board {
+    width: 400px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+}
+
+.snake-body {
+    background-color: green;
+}
+
+.food {
+    background-color: red;
+}
+
+.score {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
