@@ -1,0 +1,17 @@
+.scoreboard-container {
+    width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}

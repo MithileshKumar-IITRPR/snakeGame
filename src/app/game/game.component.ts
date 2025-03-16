@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameService } from '../service/game.service';
 
 @Component({
   selector: 'app-game',
@@ -15,7 +16,7 @@ export class GameComponent {
   score = 0;
   user: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private gameService: GameService) {}
 
   ngOnInit() {
     const userStr = localStorage.getItem('user');
@@ -62,6 +63,10 @@ export class GameComponent {
     if (this.checkCollision(head)) {
       clearInterval(this.gameInterval);
       alert('Game Over! Your score: ' + this.score);
+      // this.gameService.saveScore(this.user.id, this.score).subscribe(() => {
+        this.router.navigate(['/score-board']);
+      // });
+
     } else {
       this.snake.unshift(head);
     }

@@ -1,0 +1,15 @@
+<div class="scoreboard-container">
+    <h2>Scoreboard</h2>
+    <table>
+      <tr>
+        <th>Player</th>
+        <th>Score</th>
+      </tr>
+      <tr *ngFor="let score of scores">
+        <td>{{ score.user.name }}</td>
+        <td>{{ score.score }}</td>
+      </tr>
+    </table>
+    <button (click)="playAgain()">Play Again</button>
+</div>
+  
