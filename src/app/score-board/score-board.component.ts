@@ -13,9 +13,11 @@ export class ScoreBoardComponent {
   constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.gameService.getScores().subscribe(data => {
-      this.scores = [{score: 50, user:{name:'Mithilesh'}}];
-    // });
+    this.gameService.getScores().subscribe((data:any) => {
+      this.scores = data;
+    },(error: any) => {
+      alert('Something went wrong!');
+    });
   }
 
   playAgain() {

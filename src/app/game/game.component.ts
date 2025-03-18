@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from '../service/game.service';
 
@@ -7,21 +7,24 @@ import { GameService } from '../service/game.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent {
+export class GameComponent implements OnInit {
   boardSize = 20;
   snake = [{ x: 10, y: 10 }];
   food = { x: 5, y: 5 };
   direction = 'RIGHT';
   gameInterval: any;
   score = 0;
-  user: any;
+  userName: any;
+  userId: any;
 
   constructor(private router: Router, private gameService: GameService) {}
 
   ngOnInit() {
-    const userStr = localStorage.getItem('user');
-    if (userStr) {
-      this.user = JSON.parse(userStr);
+    const userStr = localStorage.getItem('userName');
+    const userIdStr = localStorage.getItem('userId');
+    if (userStr && userIdStr) {
+      this.userName = JSON.parse(userStr);
+      this.userId = JSON.parse(userIdStr);
     } else {
       this.router.navigate(['/login']);
     }
@@ -63,9 +66,9 @@ export class GameComponent {
     if (this.checkCollision(head)) {
       clearInterval(this.gameInterval);
       alert('Game Over! Your score: ' + this.score);
-      // this.gameService.saveScore(this.user.id, this.score).subscribe(() => {
+      this.gameService.saveScore(this.userId, this.score).subscribe(() => {
         this.router.navigate(['/score-board']);
-      // });
+      });
 
     } else {
       this.snake.unshift(head);
