@@ -14,8 +14,8 @@ export class GameService {
     return this.http.post<any>(`${this.apiUrl}/login?name=${name}`, {});
   }
 
-  saveScore(userId: number, score: number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/score?userId=${userId}&score=${score}`, {});
+  saveScore(userId: number, score: number, mode:string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/score?userId=${userId}&score=${score}&mode=${mode}`, {});
   }
 
   getScores(): Observable<any[]> {

@@ -4,7 +4,8 @@
            class="cell"
            [ngClass]="{
                 'snake-body': isSnakeBody(x, y),
-                'food': isFood(x, y)
+                'food': isFood(x, y),
+                'wall': isWall(x, y)
             }">
       </div>
     </div>

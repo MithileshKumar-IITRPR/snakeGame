@@ -20,7 +20,9 @@ export class ScoreBoardComponent {
     });
   }
 
-  playAgain() {
-    this.router.navigate(['/game']);
+  playGame(mode:string) {
+    if (['easy', 'medium', 'hard'].includes(mode)) {
+      this.router.navigate(['/game', mode]);
+    }
   }
 }
