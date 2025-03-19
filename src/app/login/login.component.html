@@ -1,5 +1,11 @@
 <div class="login-container">
-    <h2>Login</h2>
-    <input type="text" [(ngModel)]="userName" placeholder="Enter your name" />
-    <button (click)="login()">Login</button>
+    <header class="game-header">
+        <h1>🐍 Snake Game</h1>
+        <p>Enter your name to start playing!</p>
+    </header>
+
+    <div class="login-form">
+        <input type="text" [(ngModel)]="userName" placeholder="Enter your name" />
+        <button (click)="login()">Login</button>
+    </div>
 </div>

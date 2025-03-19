@@ -1,13 +1,18 @@
-<div class="game-board">
+<div class="game-container">
+  <div class="game-header">
+    <h1>🐍 Snake Game</h1>
+    <p>Mode: <span class="game-mode">{{ mode | titlecase }}</span></p>
+    <p class="score">Score: {{ score }}</p>
+  </div>
+
+  <div class="game-board">
     <div *ngFor="let row of rows; let y = index" class="row">
-      <div *ngFor="let col of cols; let x = index"
-           class="cell"
-           [ngClass]="{
+      <div *ngFor="let col of cols; let x = index" class="cell" [ngClass]="{
                 'snake-body': isSnakeBody(x, y),
                 'food': isFood(x, y),
                 'wall': isWall(x, y)
             }">
       </div>
     </div>
-    <div class="score">Score: {{ score }}</div>
+  </div>
 </div>

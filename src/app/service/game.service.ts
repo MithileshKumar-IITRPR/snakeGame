@@ -21,4 +21,8 @@ export class GameService {
   getScores(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/scores`);
   }
+
+  getModeWiseTopScore(userId:number): Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}/modeWiseTopScore?userId=${userId}`);
+  }
 }

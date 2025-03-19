@@ -1,23 +1,150 @@
 .scoreboard-container {
-    width: 400px;
-    margin: 20px auto;
-    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.game-header h1 {
+    font-size: 3rem;
+    color: #4caf50;
+    margin-bottom: 10px;
+}
+
+.game-header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.mode-selection {
+    margin-bottom: 40px;
+}
+
+.mode-selection h2 {
+    text-align: center;
+    color: #4caf50;
     margin-bottom: 20px;
 }
 
-th,
-td {
-    border: 1px solid #ddd;
-    padding: 8px;
+.mode-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
 }
 
-.mode-selection button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+.mode-card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mode-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.mode-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.mode-card.easy {
+    background-color: #e8f5e9;
+    border: 2px solid #4caf50;
+}
+
+.mode-card.medium {
+    background-color: #fff3e0;
+    border: 2px solid #ff9800;
+}
+
+.mode-card.hard {
+    background-color: #ffebee;
+    border: 2px solid #f44336;
+}
+
+.mode-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-top-scores {
+    margin-bottom: 40px;
+}
+
+.user-top-scores h2 {
+    text-align: center;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+.user-scores-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.user-scores-table th,
+.user-scores-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.user-scores-table th {
+    background-color: #4caf50;
+    color: white;
+}
+
+.user-scores-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user-scores-table tr:hover {
+    background-color: #ddd;
+}
+
+.top-scores {
+    margin-bottom: 40px;
+}
+
+.top-scores h2 {
+    text-align: center;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+.top-scores-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.top-scores-table th,
+.top-scores-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.top-scores-table th {
+    background-color: #4caf50;
+    color: white;
+}
+
+.top-scores-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.top-scores-table tr:hover {
+    background-color: #ddd;
 }

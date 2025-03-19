@@ -1,22 +1,63 @@
 <div class="scoreboard-container">
-    <h2>Scoreboard</h2>
-    <table>
+  <header class="game-header">
+    <h1>🐍 Snake Game</h1>
+    <p>Challenge yourself and climb the leaderboard!</p>
+  </header>
+
+  <div class="mode-selection">
+    <h2>Select Game Mode</h2>
+    <div class="mode-buttons">
+      <div class="mode-card easy" (click)="playGame('easy')">
+        <h3>Easy</h3>
+        <p>Relaxed gameplay for beginners.</p>
+      </div>
+      <div class="mode-card medium" (click)="playGame('medium')">
+        <h3>Medium</h3>
+        <p>Fast-paced action for experienced players.</p>
+      </div>
+      <div class="mode-card hard" (click)="playGame('hard')">
+        <h3>Hard</h3>
+        <p>Fast-paced along with random hurdle action for experts.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-top-scores">
+    <h2>Your Top Scores</h2>
+    <table class="user-scores-table">
       <tr>
-        <th>Player</th>
-        <th>Score</th>
         <th>Mode</th>
+        <th>Top Score</th>
       </tr>
-      <tr *ngFor="let score of scores">
-        <td>{{ score.user.userName }}</td>
-        <td>{{ score.score }}</td>
-        <td>{{ score.mode }}</td>
+      <tr>
+        <td>Easy</td>
+        <td>{{ userTopScores.easy }}</td>
+      </tr>
+      <tr>
+        <td>Medium</td>
+        <td>{{ userTopScores.medium }}</td>
+      </tr>
+      <tr>
+        <td>Hard</td>
+        <td>{{ userTopScores.hard }}</td>
       </tr>
     </table>
-    <div class="mode-selection">
-      <h3>Select Game Mode</h3>
-      <button (click)="playGame('easy')">Easy</button>
-      <button (click)="playGame('medium')">Medium</button>
-      <button (click)="playGame('hard')">Hard</button>
+  </div>
+
+  <div class="top-scores">
+    <h2>Top Scores (Mode-wise)</h2>
+    <div *ngFor="let mode of ['easy', 'medium', 'hard']" class="mode-section">
+      <h3>{{ mode | titlecase }} Mode</h3>
+      <table class="top-scores-table">
+        <tr>
+          <th>Player</th>
+          <th>Score</th>
+        </tr>
+        <tr *ngFor="let score of getTopScores(mode)">
+          <td>{{ score.user.userName }}</td>
+          <td>{{ score.score }}</td>
+        </tr>
+      </table>
     </div>
+  </div>
 </div>
-  
