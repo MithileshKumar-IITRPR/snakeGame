@@ -8,21 +8,22 @@ This frontend is built with Angular and provides the user interface for the 2D S
 - **TypeScript**
 - **HTML/CSS**
 - **Angular Router** for navigation
-- **Angular Guards** for route protection
+- **Angular Guards & Interceptors** for route protection and JWT handling
 
 ## Architecture & Design Patterns
 - **Component-Based Architecture:** The UI is modularized into components (Login, Scoreboard, Game).
 - **Routing & Guards:** The app uses Angular Router to navigate between pages with an AuthGuard to restrict access.
+- **HTTP Interceptors:** Automatically attach JWT tokens to all outgoing HTTP requests.
 - **Service Layer:** A centralized GameService handles all API calls.
 
 ## Assumptions
 - Users log in with just a name.
-- username and userId are stored in localStorage and used for subsequent API calls.
+- JWT tokens are stored in localStorage and used for subsequent API calls.
 - The game mode (easy, medium, hard) is passed via routing to the game component.
 - Hard mode dynamically generates walls that avoid the snake and the three cells immediately in front of the snake’s head.
 
 ## Features Supported
-- **Login:** Simple form that logs in the user and stores user details.
+- **Login:** Simple form that logs in the user and stores the JWT token.
 - **Scoreboard:** Displays top scores with player names and game modes.
 - **Game Modes:**  
   - **Easy:** Constant speed.

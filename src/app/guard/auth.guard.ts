@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,25 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot
   ): boolean {
-    const userName = localStorage.getItem('userName');
-    const userId = localStorage.getItem('userId');
-    if (userName && userId) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
-      return false;
+    const token = localStorage.getItem('token');
+    if (!token) {
+          localStorage.clear();
+          this.router.navigate(['/login']);
+          return false;
     }
+    else{
+      try {
+        const decodedToken: any = jwtDecode(token);
+        const tokenExpired = decodedToken.exp < (Date.now() / 1000);
+        if (!tokenExpired) {
+          return true;
+        }
+      } catch (error) {
+        console.error('Error decoding token:', error);
+      }
+    }
+    localStorage.clear();
+    this.router.navigate(['/login']);
+    return false;
   }
 }

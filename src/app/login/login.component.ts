@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.userName.trim()) {
       this.gameService.login(this.userName.trim()).subscribe((data)=>{
+        localStorage.setItem('token', data.token);
         localStorage.setItem('userName', JSON.stringify(data.userName));
         localStorage.setItem('userId', JSON.stringify(data.id));
         this.router.navigate(['/score-board']);

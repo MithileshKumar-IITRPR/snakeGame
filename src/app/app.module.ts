@@ -4,10 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game/game.component';
 import { ScoreBoardComponent } from './score-board/score-board.component';
+import { HttpInterceptorInterceptor } from './auth/http-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { ScoreBoardComponent } from './score-board/score-board.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
