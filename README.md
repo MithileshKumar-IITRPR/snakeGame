@@ -44,3 +44,11 @@ This frontend is built with Angular and provides the user interface for the 2D S
      ng serve
      ```
    - Open your browser and go to [http://localhost:4200](http://localhost:4200).
+
+## Additional Information
+- **JWT Interceptor:** Automatically appends the JWT token to HTTP requests.
+- **Routing Flow:**  
+  1. **Login:** User logs in and is routed to the Scoreboard.
+  2. **Scoreboard:** User sees scores and selects a game mode.
+  3. **Game:** User is routed to the game component with the chosen mode.
+- **Dynamic Gameplay:** In hard mode, walls are regenerated every time food is eaten, avoiding snake positions and cells immediately in front of the snake’s head.
